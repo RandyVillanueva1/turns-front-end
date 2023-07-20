@@ -1,0 +1,8 @@
+Node JS
+-- Comandos para bajar la carpeta node-modules ---
+npm install -g @angular/cli   //bajar paqueterias
+npm install		      //descargarlas
+
+
+--- Comando para levantar el proyecto ----
+ng serve                         
