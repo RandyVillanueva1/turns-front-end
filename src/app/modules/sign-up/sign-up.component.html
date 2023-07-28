@@ -1,0 +1,37 @@
+<body>
+    <img class="imagenEnc" src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp">
+    <div class="contenedor">
+        <div class="seccion1">
+          <div class="contenedorimg">
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+            alt="Imagen" class="imagencont">
+           </div>
+          </div>
+          <div class="seccion2">
+            <form [formGroup]="frmSignUp" (ngSubmit)="onSubmit()">
+              <div class="fila">
+                <p>Crear cuenta</p>
+              </div>
+              <div class="fila">
+                <!-- Nombre-->
+                <input type="text" placeholder="Nombre" formControlName="nombre"/>
+              </div>
+              <div class="fila">
+                <!-- Email-->
+                <input type="email" placeholder="Correo electronico" formControlName="correo"/>
+              </div>
+              <div class="fila">
+                <!-- contraseña -->
+                <input type="password" placeholder="Contraseña" formControlName="contrasena"/>
+              </div>
+              <div class="fila">
+                <!-- boton -->
+                <button type="submit">Registrar</button><br><br>
+                <a routerLink="/sign-in">Iniciar sesión</a>
+              </div>
+            </form>
+            <!-- Contenido de la segunda sección -->
+            
+          </div>
+    </div>
+</body>
