@@ -1,1 +1,28 @@
-<p>request-turn works!</p>
+<body>
+    <img class="imagenEnc" src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp">
+    <div class="contenedor">
+        <div class="seccion1">
+          <div class="contenedorimg">
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+            alt="Imagen" class="imagencont">
+           </div>
+          </div>
+          <div class="seccion2">
+            <form ><!--formulario-->
+              <div class="fila">
+                <p>{{titulo}}</p>
+              </div>
+              <div class="fila">
+                <!-- boton -->
+                <button type="submit" >{{boton}}</button><br><br>
+              </div>
+              <div class="fila">
+                 <!--turno -->
+                 <input type="text" placeholder="Turno" [readonly]="true"/>
+              </div>
+            </form>
+            <!-- Contenido de la segunda sección -->
+            
+          </div>
+    </div>
+</body>

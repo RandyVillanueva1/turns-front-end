@@ -138,4 +138,9 @@ body {
     width: 150px; /* Ajusta el ancho de la imagen */
     height: auto; /* Permite que la altura se ajuste automáticamente para mantener la proporción */
   }
-  
+  /* Estilo para el mensaje de campo no válido */
+.campo-invalido {
+  color: #f44336; /* Color del texto rojo */
+  font-size: 12px; /* Tamaño de fuente */
+  margin-top: 5px; /* Espaciado superior */
+}

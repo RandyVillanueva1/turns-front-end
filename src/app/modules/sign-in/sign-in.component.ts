@@ -9,15 +9,28 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   
 })
 export class SigInComponent  {
-  frmSignIn: FormGroup;
-  constructor(private formBuilder: FormBuilder) {
-    // Crea el FormGroup y define los controles con sus validaciones
-    this.frmSignIn= this.formBuilder.group({
-      correo: ['', [Validators.required, Validators.email]],
-      contrasena: ['', [Validators.required]]
-    });
+  titulo='Iniciar sesión';
+  boton='Entrar';
+  link='Crear cuenta';
+  frmSignIn!: FormGroup;
+
+  constructor(private fb: FormBuilder) {
   }
+
+  ngOnInit(): void {
+    this.buildForm();
+  }
+  //construir formulario 
+buildForm(): void {
+  this.frmSignIn = this.fb.group({
+    correo: ['', [Validators.required, Validators.email]],
+    contrasena: ['', [Validators.required]]
+  });
+}
+  
   onSubmit(){
-    console.log(this.frmSignIn)
+    if(this.frmSignIn?.valid){
+     
+    }
   }
 }

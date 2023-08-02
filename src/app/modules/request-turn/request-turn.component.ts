@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./request-turn.component.scss']
 })
 export class RequestTurnComponent {
-
+titulo='Generar turno';
+boton='Generar turno';
 }

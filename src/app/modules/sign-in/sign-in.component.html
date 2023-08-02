@@ -11,7 +11,7 @@
           <!--Formulario-->
           <form [formGroup]="frmSignIn" (ngSubmit)="onSubmit()">
             <div class="fila">
-              <p>Iniciar sesión</p>
+              <p>{{titulo}}</p>
             </div>
             <div class="fila">
               <!-- Email-->
@@ -23,9 +23,11 @@
             </div>
             <div class="fila">
               <!-- boton -->
-              <button type="submit">Entrar</button><br><br>
-                   <a routerLink="/sign-up">Crear cuenta</a>
+              <button type="submit" [disabled]="!frmSignIn.valid" >{{boton}}</button><br><br>
+                   <a routerLink="/sign-up">{{link}}</a>
             </div>
+             <!-- Contenido de la segunda sección -->
+             valido{{frmSignIn.valid | json}}
           </form>
         <!--di--></div>
       </div>

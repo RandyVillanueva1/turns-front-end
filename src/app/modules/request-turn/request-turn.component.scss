@@ -1,0 +1,146 @@
+body {
+    background-image: linear-gradient(to bottom, #6580E1, #ffffff, #6580E1);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 98vh;
+    margin: 0;
+    padding: 0;  
+    display: flex;
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+   /* Opcional: para hacer que el cuerpo ocupe todo el alto de la ventana */
+  }
+  .contenedor {
+    width: 900px; /* Ajusta el ancho según tus necesidades */
+    height: 400px; /* Ajusta el alto según tus necesidades */
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+    display: grid; /* Utilizamos CSS Grid para el diseño */
+    grid-template-columns: 1fr 1fr; /* Divide el contenedor en dos columnas de igual tamaño */
+    gap: 20px; /* Espacio entre las columnas */
+  }
+  .seccion1 {
+    padding: 20px; /* Añade un espacio de relleno para separar las secciones */
+    border: none; /* Agrega un borde para separar visualmente las secciones */
+  }
+  .seccion2 {
+    padding: 20px; /* Añade un espacio de relleno para separar las secciones */
+    border: none; /* Agrega un borde para separar visualmente las secciones */
+    /*filas*/
+    display: flex; /* Utilizamos Flexbox para el diseño en columnas (vertical) */
+    flex-direction: column; /* Indicamos que los elementos se distribuyan en columnas */
+    height: 300px; /* Ajusta la altura del contenedor según tus necesidades */
+  }
+  .fila {
+    flex: 1; /* Hace que todas las filas ocupen el mismo espacio vertical */
+    padding: 10px; /* Añade un espacio de relleno para separar las filas */
+    border: none; /* Agrega un borde para separar visualmente las filas */
+  }
+  
+  
+  /*fin de contenedores*/
+  /******Contenedor imgenes*******/
+  /* Estilo para el contenedor */
+  .contenedorimg {
+  display: flex; /* Utilizamos Flexbox para el diseño */
+  justify-content: center; /* Centramos horizontalmente la imagen */
+  align-items: center; /* Centramos verticalmente la imagen */
+  width: 400px; /* Ancho del contenedor */
+  height: 400px; /* Altura del contenedor */
+  border: none; /* Agregamos un borde al contenedor para visualizarlo */
+  }
+  
+  /* Estilo para la imagen */
+  .imagencont{
+  max-width: 100%; /* La imagen no excederá el ancho del contenedor */
+  max-height: 100%; /* La imagen no excederá la altura del contenedor */
+  }
+  
+  p {
+    font-size: 20px;
+    font-family:Arial;
+    color: #5844D7;
+    text-align: center;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+  }
+  
+  
+  /*************Estilo para la etiqueta input */
+  input {
+    width: 320px;
+    height: 20px;
+    font-size: 16px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    outline: none;
+    box-shadow:2px 2px 5px rgba(0, 0, 0, 0.3); 
+  }
+  
+  /* Estilo para el placeholder (texto de sugerencia) */
+  input::placeholder {
+    color: #C3CBE8;
+  }
+  
+  /* Estilo para el foco (cuando se hace clic en el input) */
+  input:focus {
+    border-color: #5844D7;
+    box-shadow: 0 0 5px rgba(146, 121, 238, 0.5);
+  }
+  
+  /*********boton*/
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #FFFFFF;
+    color: #5844D7;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    box-shadow:2px 2px 5px rgba(0, 0, 0, 0.3); 
+    cursor: pointer;
+    outline: none;
+  }
+  
+  /* Estilo para el botón cuando se pasa el cursor por encima */
+  button:hover {
+    background-color: #5844D7;
+    color: #FFFFFF
+  }
+  
+  /* Estilo para el botón cuando se hace clic */
+  button:active {
+    background-color: #2d2081;
+  }
+  /*etiqueta a********/
+  a {
+    text-decoration: none;
+    color: #6580E1;
+    transition: color 0.3s ease;
+  }
+  
+  /* Estilo para el hipervínculo cuando se pasa el cursor por encima */
+  a:hover {
+    color: #0056b3;
+  }
+  
+  /* Estilo para el hipervínculo cuando se hace clic */
+  a:active {
+    color: #003c80;
+  }
+  /*Imagen*/
+  .imagenEnc{
+    position: absolute;
+    top: 10px; /* Ajusta la distancia desde la parte superior */
+    left: 10px; /* Ajusta la distancia desde la izquierda */
+    width: 150px; /* Ajusta el ancho de la imagen */
+    height: auto; /* Permite que la altura se ajuste automáticamente para mantener la proporción */
+  }
+  /* Estilo para el mensaje de campo no válido */
+.campo-invalido {
+  color: #f44336; /* Color del texto rojo */
+  font-size: 12px; /* Tamaño de fuente */
+  margin-top: 5px; /* Espaciado superior */
+}

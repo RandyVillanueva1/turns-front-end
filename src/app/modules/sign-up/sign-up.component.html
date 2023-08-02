@@ -10,7 +10,7 @@
           <div class="seccion2">
             <form [formGroup]="frmSignUp" (ngSubmit)="onSubmit()">
               <div class="fila">
-                <p>Crear cuenta</p>
+                <p>{{titulo}}</p>
               </div>
               <div class="fila">
                 <!-- Nombre-->
@@ -26,12 +26,12 @@
               </div>
               <div class="fila">
                 <!-- boton -->
-                <button type="submit">Registrar</button><br><br>
-                <a routerLink="/sign-in">Iniciar sesión</a>
+                <button type="submit" [disabled]="!frmSignUp.valid">{{boton}}</button><br><br>
+                <a routerLink="/">{{link}}</a>
               </div>
             </form>
             <!-- Contenido de la segunda sección -->
-            
+           
           </div>
     </div>
 </body>
