@@ -138,3 +138,35 @@ a:active {
   width: 150px; /* Ajusta el ancho de la imagen */
   height: auto; /* Permite que la altura se ajuste automáticamente para mantener la proporción */
 }
+
+/* Estilos para el contenedor fijo en la parte superior de la página */
+.fixed-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px; /* Ajusta el padding según tus necesidades */
+  color: #D1D8E1; /* Color del texto */
+}
+
+/* Estilos para el contenido en la esquina superior izquierda */
+.left-content {
+  display: flex;
+  align-items: center;
+}
+
+.left-content h1 {
+  font-size: 24px;
+  margin-right: 10px; /* Espacio entre el título y la imagen */
+}
+
+.left-content img {
+  width: 50px; /* Ajusta el tamaño de la imagen según tus necesidades */
+  height: 50px;
+  border-radius: 50%; /* Para hacer la imagen redonda, asumiendo que es cuadrada */
+}
+
+/* Estilos adicionales para el resto del contenido del contenedor */
+.fixed-container p {
+  font-size: 16px; /* Tamaño de fuente del contenido adicional */
+}

@@ -9,6 +9,8 @@ import { RequestTurnComponent } from './modules/request-turn/request-turn.compon
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
+import { TurnComponent } from './modules/turn/turn.component';
+
 
 @NgModule({
   declarations: [
@@ -16,6 +18,7 @@ import { FormsModule } from '@angular/forms';
     SigInComponent,
     SignUpComponent,
     RequestTurnComponent,
+    TurnComponent
 
   ],
   imports: [

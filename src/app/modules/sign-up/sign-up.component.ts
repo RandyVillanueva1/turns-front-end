@@ -8,36 +8,38 @@ import { Account } from 'src/app/models/account.model';
   styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent {
-  Account?: Account;
-  frmSignUp!: FormGroup;
+  frmSignUp: FormGroup= new FormGroup({});
   titulo='Crear cuenta';
   boton='Registrar';
   link='Iniciar sesión'
 
-  constructor(private fb: FormBuilder) {}
-  //
-  ngOnInit(): void {
+  constructor(private fb: FormBuilder) {
+  }
+  
+  ngOnInit(){
     this.buildForm();
   }
-
-//construir formulario 
-buildForm(): void {
-  this.frmSignUp = this.fb.group({
-    nombre: ['', [Validators.required]],
-    correo: ['', [Validators.required, Validators.email]],
-    contrasena: ['', [Validators.required]]
-  });
-}
- //funcion enviar
+ 
+  buildForm(): void {
+    this.frmSignUp = this.fb.group({
+      nombre: ['', [Validators.required]],
+      correo: ['', [Validators.required, Validators.email]],
+      contrasena: ['', [Validators.required]]
+    });
+  }
   onSubmit(){
-    if(this.frmSignUp?.valid){
-      const newAccount: Account = this.frmSignUp.value;
+    console.log(this.frmSignUp.valid);
+    console.log(this.frmSignUp.value);
+    if(this.frmSignUp.valid){
       console.log('Formulario valido');
-      console.log(`[REGISTRO] Recibiendo datos del fomrulario ${JSON.stringify(newAccount)}`);
-   /* this.productServices.create(newAccount).subscribe((response=> {
-      console.log(data);
-      this.router.navigate(['console/business/' + this.idBusiness + '/product']);
-    });*/
+      const account: Account={
+        id_account:0,
+        name: this.frmSignUp.value.nombre,
+        email: this.frmSignUp.value.correo,
+        password: this.frmSignUp.value.contrasena
+      }
+      //servicio 
+
     }
   }
 

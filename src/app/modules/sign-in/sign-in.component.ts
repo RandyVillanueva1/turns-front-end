@@ -9,28 +9,36 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   
 })
 export class SigInComponent  {
+  frmSignIn!: FormGroup;
   titulo='Iniciar sesión';
   boton='Entrar';
   link='Crear cuenta';
-  frmSignIn!: FormGroup;
 
-  constructor(private fb: FormBuilder) {
-  }
+  constructor(private fb: FormBuilder) {} 
 
-  ngOnInit(): void {
+  ngOnInit(){
     this.buildForm();
   }
-  //construir formulario 
-buildForm(): void {
-  this.frmSignIn = this.fb.group({
-    correo: ['', [Validators.required, Validators.email]],
-    contrasena: ['', [Validators.required]]
-  });
-}
+
+  buildForm(): void {
+    this.frmSignIn = this.fb.group({
+      correo: ['', [Validators.required, Validators.email]],
+      contrasena: ['', [Validators.required]]
+    });
+  }
   
-  onSubmit(){
-    if(this.frmSignIn?.valid){
-     
+  onSubmit() {
+    if (this.frmSignIn.valid) {
+      const username = this.frmSignIn.value.correo;
+      const password = this.frmSignIn.value.contrasena;
+
+      // servicio
+      if (username === 'galleta@gmail.com' && password === '12345') {
+        // Aquí redireccionas al usuario a la página de inicio o al dashboard
+        console.log('Inicio de sesión exitoso');
+      } else {
+        console.log('Credenciales inválidas');
+      }
     }
   }
 }

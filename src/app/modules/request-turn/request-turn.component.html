@@ -1,5 +1,10 @@
 <body>
-    <img class="imagenEnc" src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp">
+  <div class="fixed-container">
+    <div class="left-content">
+      <h1>Turnos.com</h1>
+      <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp">
+    </div>
+  </div>
     <div class="contenedor">
         <div class="seccion1">
           <div class="contenedorimg">
@@ -14,11 +19,7 @@
               </div>
               <div class="fila">
                 <!-- boton -->
-                <button type="submit" >{{boton}}</button><br><br>
-              </div>
-              <div class="fila">
-                 <!--turno -->
-                 <input type="text" placeholder="Turno" [readonly]="true"/>
+                <button type="submit" (click)="btnTurn()">{{boton}}</button><br><br>
               </div>
             </form>
             <!-- Contenido de la segunda sección -->
