@@ -1,42 +1,51 @@
 <body>
+<div class="contenedor">
   <div class="fixed-container">
     <div class="left-content">
       <h1>Turnos.com</h1>
       <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp">
     </div>
   </div>
-    <div class="contenedor">
-        <div class="seccion1">
-          <div class="contenedorimg">
-            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
-            alt="Imagen" class="imagencont">
-           </div>
-          </div>
-          <div class="seccion2">
-            <form [formGroup]="frmSignUp" (ngSubmit)="onSubmit()">
-              <div class="fila">
-                <p>{{titulo}}</p>
-              </div>
-              <div class="fila">
-                <!-- Nombre-->
-                <input type="text" placeholder="Nombre" formControlName="nombre"/>
-              </div>
-              <div class="fila">
-                <!-- Email-->
-                <input type="email" placeholder="Correo electronico" formControlName="correo"/>
-              </div>
-              <div class="fila">
-                <!-- contraseña -->
-                <input type="password" placeholder="Contraseña" formControlName="contrasena"/>
-              </div>
-              <div class="fila">
-                <!-- boton -->
-                <button type="submit" [disabled]="!frmSignUp.valid">{{boton}}</button><br><br>
-                <a routerLink="/">{{link}}</a>
-              </div>
-            </form>
-            <!-- Contenido de la segunda sección -->
-            valido{{frmSignUp.valid | json}}
-          </div>
+    <div class="seccion1">
+      <div class="contenedorimg">
+        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+        alt="Imagen" class="imagencont">
+       </div>
+      </div>
+  <div class="seccion2">
+    <form [formGroup]="frmSignUp" (ngSubmit)="onSubmit()">
+      <div class="fila">
+        <p>{{titulo}}</p>
+      </div>
+      <div class="fila">
+        <!-- Nombre-->
+        <input type="text" placeholder="Nombre" formControlName="nombre"/>
+      </div>
+      <div class="fila">
+        <!-- Email-->
+        <input type="email" placeholder="Correo electronico" formControlName="correo"/>
+      </div>
+      <div class="fila">
+        <!-- contraseña -->
+        <input type="password" placeholder="Contraseña" formControlName="contrasena"/>
+      </div>
+      <div class="fila">
+        <!-- boton -->
+        <button type="submit" [disabled]="!frmSignUp.valid">{{boton}}</button><br><br>
+        <a routerLink="/">{{link}}</a>
+      </div>
+    </form>
+
+    <!-- Mensaje de éxito -->
+    <div *ngIf="showSuccessMessage" class="success-message">
+      ¡Cuenta creada correctamente!
     </div>
+
+    <!-- Mensaje de error -->
+    <div *ngIf="showErrorMessage" class="error-message">
+      Hubo un error al crear la cuenta. Por favor, inténtalo de nuevo más tarde.
+    </div>
+
+  </div>
+</div>
 </body>

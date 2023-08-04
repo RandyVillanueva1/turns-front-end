@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  urlApiBackend: 'http://localhost:8080/api/v1/',
+  urlApiBackend: 'http://localhost:5000/api/',
   page: {
     suffix: ' | Turnos',
   }

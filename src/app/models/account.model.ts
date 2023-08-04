@@ -1,9 +1,9 @@
-import { CatTurnModel } from "./cat-turn.model"
+import { CatTypeAccountModel } from "./cat-type-account.model"
 
-export interface Account {
-  id_account?: number;
-  name?: string;
-  email?: string;
-  password?: string; 
-  id_cat_type_account?: CatTurnModel;
+export interface AccountModel {
+  id_cuenta?: number;
+  nombre?: string;
+  correo?: string;
+  contrasena?: string; 
+  id_cat_tipo_cuenta?: CatTypeAccountModel;
 }
