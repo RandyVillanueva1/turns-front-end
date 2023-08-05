@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router'; // Importa el módulo RouterModu
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SigInComponent } from './modules/sign-in/sign-in.component';
+import { SignInComponent } from './modules/sign-in/sign-in.component';
 import { SignUpComponent } from './modules/sign-up/sign-up.component';
 import { RequestTurnComponent } from './modules/request-turn/request-turn.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -16,7 +16,7 @@ import { TurnComponent } from './modules/turn/turn.component';
 @NgModule({
   declarations: [
     AppComponent,
-    SigInComponent,
+    SignInComponent,
     SignUpComponent,
     RequestTurnComponent,
     TurnComponent,

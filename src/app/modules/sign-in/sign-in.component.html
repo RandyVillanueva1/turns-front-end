@@ -5,37 +5,38 @@
       <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp">
     </div>
   </div>
-  
+
   <div class="contenedor">
-      <div class="seccion1">
-         <div class="contenedorimg">
-          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+    <div class="seccion1">
+      <div class="contenedorimg">
+        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
           alt="Imagen" class="imagencont">
-         </div>
-        </div>
-      <div class="seccion2">
-        <!--Formulario-->
-        <form [formGroup]="frmSignIn" (ngSubmit)="onSubmit()">
-          <div class="fila">
-            <p>{{titulo}}</p>
-          </div>
-          <div class="fila">
-            <!-- Email-->
-            <input type="email" placeholder="Correo electronico" formControlName="correo"/>
-          </div>
-          <div class="fila">
-            <!-- contraseña -->
-            <input type="password" placeholder="Contraseña" formControlName="contrasena" />
-          </div>
-          <div class="fila">
-            <!-- boton -->
-            <button type="submit" [disabled]="!frmSignIn.valid" >{{boton}}</button><br><br>
-                 <a routerLink="/sign-up">{{link}}</a>
-          </div>
-           <!-- Contenido de la segunda sección -->
-           valido{{frmSignIn.valid | json}}
-        </form>
-      <!--di--></div>
+      </div>
     </div>
-    
+    <div class="seccion2">
+      <!-- Formulario -->
+      <form [formGroup]="frmSignIn" (ngSubmit)="iniciarSesion()">
+        <div class="fila">
+          <p>{{titulo}}</p>
+        </div>
+        <div class="fila">
+          <!-- Email -->
+          <input type="email" placeholder="Correo electronico" formControlName="correo" />
+        </div>
+        <div class="fila">
+          <!-- Contraseña -->
+          <input type="password" placeholder="Contraseña" formControlName="contrasena" />
+        </div>
+        <div class="fila">
+          <!-- Botón -->
+          <button type="submit" [disabled]="!frmSignIn.valid">{{boton}}</button><br><br>
+          <a routerLink="/sign-up">{{link}}</a>
+        </div>
+        <!-- Mensaje de credenciales inválidas -->
+        <div *ngIf="frmSignIn.valid && invalidCredentials" class="fila">
+          <p>Credenciales inválidas</p>
+        </div>
+      </form>
+      <!--di--></div>
+  </div>
 </body>
