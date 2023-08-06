@@ -1,32 +1,37 @@
 <body>
-    <div class="fixed-container">
-        <div class="left-content">
-          <h1>Turnos.com</h1>
-          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp">
-        </div>
+  <div class="fixed-container">
+      <div class="left-content">
+        <h1>Turnos.com</h1>
+        <img src="assets/images/logo.png">
       </div>
-    <div class="contenedor">
-       <p>Turnos</p> 
-        <table class="table-spacing">
-            <thead>
-                <tr>
-                    <th>Id Cliente</th>
-                    <th>Turno</th>
-                    <th>Persona</th>
-                    <th>Cuenta</th>
-                </tr>
-            </thead>
-            <tbody>
-                  <!-- Filas de la tabla (dinámicas) -->
-                <tr *ngFor="let cliente of cliente" [ngClass]="{ 'resaltado': clienteFila(cliente.id) }">
-                <td>{{ cliente.id }}</td>
-                <td>{{ cliente.turno }}</td>
-                <td>{{ cliente.persona}}</td>
-                <td>{{ cliente.cuenta }}</td>
-                </tr>
-            </tbody>
-        </table>
+    </div>
+  <div class="contenedor">
+    <div class="titulo">Turnos</div>
+    <div class="contenido">
+      <div class="tabla-contenedor">
+      <table class="table-spacing">
+          <thead>
+              <tr>
+                  <th>Id Cliente</th>
+                  <th>Turno</th>
+                  <th>Persona</th>
+                  <th>Cuenta</th>
+              </tr>
+          </thead>
+          <tbody>
+                <!-- Filas de la tabla (dinámicas) -->
+              <tr *ngFor="let cliente of cliente" [ngClass]="{ 'resaltado': clienteFila(cliente.id) }">
+              <td>{{ cliente.id }}</td>
+              <td>{{ cliente.turno }}</td>
+              <td>{{ cliente.persona}}</td>
+              <td>{{ cliente.cuenta }}</td>
+              </tr>
+          </tbody>
+      </table>
       </div>
-      
+      </div>
+    </div><!--contenedor-->
+    
 </body>
+
 

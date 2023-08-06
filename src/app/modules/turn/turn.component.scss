@@ -1,122 +1,102 @@
 body {
-    background-image: linear-gradient(to bottom, #6580E1, #ffffff, #6580E1);
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 100vh;
-    margin: 0;
-    padding: 0;  
-    display: flex;
-    justify-content: center; /* Centrar horizontalmente */
-    align-items: center; /* Centrar verticalmente */
-   /* Opcional: para hacer que el cuerpo ocupe todo el alto de la ventana */
-  }
-  .contenedor {
-    width: 900px; /* Ajusta el ancho según tus necesidades */
-    height: 400px; /* Ajusta el alto según tus necesidades */
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
-    display: grid; /* Utilizamos CSS Grid para el diseño */
-    justify-content: center;
-    align-items: center;
-  }
-  /*titulo*/
-  p {
-    font-size: 20px;
-    font-family:Arial;
-    color: #5844D7;
-    text-align: center;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-  }
-  /*********boton*/
-  button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #FFFFFF;
-    color: #5844D7;
-    border: 1px solid #ccc;
-    border-radius: 20px;
-    box-shadow:2px 2px 5px rgba(0, 0, 0, 0.3); 
-    cursor: pointer;
-    outline: none;
-  }
-  
-  /* Estilo para el botón cuando se pasa el cursor por encima */
-  button:hover {
-    background-color: #5844D7;
-    color: #FFFFFF
-  }
-  
-  /* Estilo para el botón cuando se hace clic */
-  button:active {
-    background-color: #2d2081;
-  }
+  background-image: linear-gradient(to bottom, #6580E1, #ffffff, #6580E1);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  margin: 0;
+  padding: 0;  
+  display: flex;
+  justify-content: center; /* Centrar horizontalmente */
+  align-items: center; /* Centrar verticalmente */
+ /* Opcional: para hacer que el cuerpo ocupe todo el alto de la ventana */
+}
+.contenedor {
+  width: 900px; /* Ajusta el ancho según tus necesidades */
+  height: 400px; /* Ajusta el alto según tus necesidades */
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+  display: flex; /* Utilizamos Flexbox para el diseño */
+  flex-direction: column; /* Mostramos los elementos en una columna */
+}
 
-  /*Imagen*/
-  .imagenEnc{
-    position: absolute;
-    top: 10px; /* Ajusta la distancia desde la parte superior */
-    left: 10px; /* Ajusta la distancia desde la izquierda */
-    width: 150px; /* Ajusta el ancho de la imagen */
-    height: auto; /* Permite que la altura se ajuste automáticamente para mantener la proporción */
-  }
+/*titulo*/
+.titulo {
+  font-size: 30px;
+  font-family: Arial;
+  color: #324e9b;
+  text-align: center;
+  line-height: 1.6;
+  margin: 0;
+  padding: 10px 0; /* Añadimos un espacio de relleno arriba y abajo del título */
+}
+.contenido {
+  flex: 1; /* Permite que el contenido de abajo ocupe todo el espacio disponible */
+  overflow-y: auto; /* Añade un scroll vertical cuando el contenido exceda la altura */
+  padding: 10px; /* Espacio alrededor del contenido */
+}
 /*tabla*/
+
 table {
-    border-collapse: collapse;
-    width: 100%;
-    border: 1px solid #000; /* Borde de 1 píxel de grosor y color negro */
-    border-collapse: collapse;
-  }
+border-collapse: collapse;
+width: 90%; /* Cambiamos el ancho de la tabla al 90% del contenedor */
+border: 1px solid #686767; /* Borde de 1 píxel de grosor y color gris */
+margin: 20px 0; /* Añadimos un espacio de separación arriba y abajo de la tabla */
+}
+
 thead {
-    background-color: #6580E1; /* Color de fondo del encabezado */
-    font-weight: bold; /* Texto en negrita en el encabezado */
-    color: #FFFFFF;
-    }
+background:  #324e9b;
+font-weight: bold; /* Texto en negrita en el encabezado */
+color: #FFFFFF;
+}
 
 thead th,
 tbody td {
-    padding: 10px;
-    text-align: center; /* Alineación centrada del contenido de las celdas */
-}
-tbody{
-    background-color: #d9e4f1;
+padding: 12px; /* Aumentamos el espaciado interno de las celdas */
+text-align: center; /* Alineación centrada del contenido de las celdas */
+border: 1px solid #797878; /* Borde de 1 píxel de grosor y color gris */
 }
 
-/*estilo fila seleccionad*/
+tbody {
+  background-image: linear-gradient(to bottom,  #A9BFEF,#7C8CE6, #94A5EB, #6580E1);
+
+}
+
+/*estilo fila seleccionada*/
 .resaltado {
-  background-color: #9298aa; /* Puedes cambiar el color aquí */
+background:#c3cdf7;/* Gris transparente */
+border: 2px #7E93EB;
+box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
-/* Estilos para el contenedor fijo en la parte superior de la página */
+/********** Estilos para el contenedor fijo en la parte superior de la página */
 .fixed-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 20px; /* Ajusta el padding según tus necesidades */
-  color: #D1D8E1; /* Color del texto */
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+padding: 20px; /* Ajusta el padding según tus necesidades */
+color: #D1D8E1; /* Color del texto */
 }
 
 /* Estilos para el contenido en la esquina superior izquierda */
 .left-content {
-  display: flex;
-  align-items: center;
+display: flex;
+align-items: center;
 }
 
 .left-content h1 {
-  font-size: 24px;
-  margin-right: 10px; /* Espacio entre el título y la imagen */
+font-size: 24px;
+margin-right: 10px; /* Espacio entre el título y la imagen */
 }
 
 .left-content img {
-  width: 50px; /* Ajusta el tamaño de la imagen según tus necesidades */
-  height: 50px;
-  border-radius: 50%; /* Para hacer la imagen redonda, asumiendo que es cuadrada */
+width: 50px; /* Ajusta el tamaño de la imagen según tus necesidades */
+height: 50px;
+border-radius: 50%; /* Para hacer la imagen redonda, asumiendo que es cuadrada */
 }
 
 /* Estilos adicionales para el resto del contenido del contenedor */
 .fixed-container p {
-  font-size: 16px; /* Tamaño de fuente del contenido adicional */
+font-size: 16px; /* Tamaño de fuente del contenido adicional */
 }
