@@ -1,35 +1,42 @@
 <body>
   <div class="fixed-container">
     <div class="left-content">
-      <h1>Turnos.com</h1>
-      <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp">
+      <h1 style="color: #FFFFFF">Turnos.com</h1>
+      <img src="assets/images/logo.png">
     </div>
   </div>
 
   <div class="contenedor">
     <div class="seccion1">
       <div class="contenedorimg">
-        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
-          alt="Imagen" class="imagencont">
+        <img src="assets/images/sign-in.jpg" alt="login" class="imagencont">
       </div>
     </div>
     <div class="seccion2">
       <!-- Formulario -->
-      <form [formGroup]="frmSignIn" (ngSubmit)="iniciarSesion()">
-        <div class="fila">
+      <form [formGroup]="frmSignIn" (ngSubmit)="iniciarSesion()" style="padding-top: 30px;">
+        <div class="fila center-btn-container">
           <p>{{titulo}}</p>
         </div>
-        <div class="fila">
+        <div class="fila center-btn-container">
           <!-- Email -->
-          <input type="email" placeholder="Correo electronico" formControlName="correo" />
+          <div class="input-with-icon">
+            <input type="email" placeholder="Correo electronico" formControlName="correo" />
+            <img src="assets/images/icon_email.gif" class="input-icon" alt="Icono Email" />
+          </div>
         </div>
-        <div class="fila">
-          <!-- Contraseña -->
-          <input type="password" placeholder="Contraseña" formControlName="contrasena" />
-        </div>
-        <div class="fila">
+        <div class="fila center-btn-container">
+          <!-- Email -->
+          <div class="input-with-icon">   
+            <input type="password" placeholder="Contraseña" formControlName="contrasena" />
+            <img src="assets/images/icon_password.gif" class="input-icon" alt="Icono Email" />
+          </div>
+        </div>        
+        <div class="fila center-btn-container">
           <!-- Botón -->
           <button type="submit" [disabled]="!frmSignIn.valid">{{boton}}</button><br><br>
+        </div>
+        <div class="fila center-btn-container">
           <a routerLink="/sign-up">{{link}}</a>
         </div>
         <!-- Mensaje de credenciales inválidas -->
@@ -37,6 +44,7 @@
           <p>Credenciales inválidas</p>
         </div>
       </form>
-      <!--di--></div>
+      <!--di-->
+    </div>
   </div>
 </body>
