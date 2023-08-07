@@ -31,7 +31,7 @@ export class SignUpComponent implements OnInit{
       nombre: ['', [Validators.required]],
       correo: ['', [Validators.required, Validators.email]],
       contrasena: ['', [Validators.required]],
-      id_cat_tipo_cuenta: [2, [Validators.required]],
+      id_cat_tipo_cuenta: [3, [Validators.required]],
     });
   }
 

@@ -56,6 +56,9 @@ export class TurnComponent implements OnInit {
               id_cat_tipo_cuenta: cuentaString,
             };
           });
+
+          // Llamar al método para ordenar los clientes con el tipo de cuenta "premium" primero
+          this.ordenarClientesPremiumPrimero();
         } else {
           console.error('La respuesta del servicio no tiene el formato esperado:', data);
         }
@@ -65,5 +68,16 @@ export class TurnComponent implements OnInit {
         console.error('Error al obtener clientes:', error);
       }
     );
+  }
+
+  ordenarClientesPremiumPrimero(): void {
+    // Filtrar los clientes con tipo de cuenta "premium" (valor numérico 3)
+    const clientesPremium = this.clientes.filter(cliente => cliente.id_cat_tipo_cuenta === 3);
+
+    // Filtrar los clientes con tipo de cuenta diferente de "premium" (cualquier otro valor)
+    const clientesNoPremium = this.clientes.filter(cliente => cliente.id_cat_tipo_cuenta !== 3);
+
+    // Concatenar ambos arrays, colocando los clientes premium primero
+    this.clientes = [...clientesPremium, ...clientesNoPremium];
   }
 }

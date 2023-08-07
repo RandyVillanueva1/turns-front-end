@@ -13,6 +13,7 @@
           <thead>
             <tr>
               <!-- Eliminamos la columna del ID -->
+              <th>Num. Turno</th>
               <th>Turno</th>
               <th>Persona</th>
               <th>Cuenta</th>
@@ -20,7 +21,8 @@
           </thead>
           <tbody>
             <!-- Filas de la tabla (dinámicas) -->
-            <tr *ngFor="let cliente of clientes">
+            <tr *ngFor="let cliente of clientes; let i = index">
+              <td>{{ i + 1 }}</td>
               <!-- Utilizamos el operador "?" para verificar si las propiedades están definidas -->
               <td>{{ cliente.id_cat_turno?.turno }}</td>
               <!-- Accedemos a la propiedad "persona" a través de "cliente.id_cuenta" -->
