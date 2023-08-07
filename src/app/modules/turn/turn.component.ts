@@ -32,38 +32,31 @@ export class TurnComponent implements OnInit {
   obtenerClientes(id_cuenta: number): void {
     // Llama al servicio para obtener la lista de turnos usando el id_cuenta
     this.turnService.getTurns().subscribe(
-      (data: any) => {
+      (data: any[]) => {
         // Verificar si la respuesta contiene tres arrays como se espera
-        if (Array.isArray(data) && data.length === 3) {
-          const [turnos, cuentas, catTurnos] = data;
+        if (Array.isArray(data) && data.length === 4) {
+          const [turnos, cuentas, catTurnos, catTiposCuenta] = data;
           this.clientes = turnos.map((turnoData: any) => {
             const id_turno = turnoData.id_turno;
             const id_cuenta = cuentas.find((cuenta: any) => cuenta.id_cuenta === turnoData.id_cuenta);
             const id_cat_turno = catTurnos.find((catTurno: any) => catTurno.id_cat_turno === turnoData.id_cat_turno);
+            const id_cat_tipo_cuenta = catTiposCuenta.find((tipoCuenta: any) => tipoCuenta.id_cat_tipo_cuenta === id_cuenta.id_cat_tipo_cuenta);
             return {
               id_turno,
               id_cuenta,
               id_cat_turno,
-              turno: id_cat_turno?.turno || 'N/A',
-              nombre: id_cuenta?.nombre || 'N/A',
-              cuenta: id_cuenta?.id_cat_tipo_cuenta?.cuenta || 'N/A',
+              id_cat_tipo_cuenta
             };
           });
         } else {
           console.error('La respuesta del servicio no tiene el formato esperado:', data);
         }
-        console.log(this.clientes)
+        console.log(this.clientes);
       },
       (error) => {
         // Manejar el error en caso de que ocurra algún problema en la solicitud
         console.error('Error al obtener clientes:', error);
       }
     );
-  }
-
-  // Método para comprobar si un cliente tiene el mismo id que el usuario actual
-  clienteFila(idCliente: number): boolean {
-    const currentUser = this.loginService.getLoggedInUser();
-    return currentUser ? idCliente === currentUser.id_cuenta : false;
   }
 }
