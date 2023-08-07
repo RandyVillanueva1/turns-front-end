@@ -39,13 +39,12 @@ export class TurnComponent implements OnInit {
 
             let cuentaString = 'N/A';
             if (id_cat_tipo_cuenta) {
-              // Realizar la validación y asignar el valor correcto al string de cuenta
               if (id_cat_tipo_cuenta.id_cat_tipo_cuenta === 1) {
                 cuentaString = 'ninguna';
               } else if (id_cat_tipo_cuenta.id_cat_tipo_cuenta === 2) {
-                cuentaString = 'cuenta';
-              } else if (id_cat_tipo_cuenta.id_cat_tipo_cuenta === 3) {
                 cuentaString = 'premium';
+              } else if (id_cat_tipo_cuenta.id_cat_tipo_cuenta === 3) {
+                cuentaString = 'cuenta';
               }
             }
 
@@ -62,7 +61,6 @@ export class TurnComponent implements OnInit {
         } else {
           console.error('La respuesta del servicio no tiene el formato esperado:', data);
         }
-        console.log(this.clientes);
       },
       (error) => {
         console.error('Error al obtener clientes:', error);

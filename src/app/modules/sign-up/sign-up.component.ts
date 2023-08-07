@@ -50,7 +50,7 @@ export class SignUpComponent implements OnInit{
           console.log('Cuenta creada:', response);
           this.showSuccessMessage = true;
           this.showErrorMessage = false;
-          this.router.navigate(['/request-turn']);
+          this.router.navigate(['/']);
         },
         (error) => {
           console.error('Error al crear la cuenta:', error);
