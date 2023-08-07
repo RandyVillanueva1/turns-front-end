@@ -1,41 +1,63 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { RequestTurnService } from 'src/app/services/request-turn/request-turn.service';
+import { TurnModel } from 'src/app/models/turn.model';
+import { LoginService } from 'src/app/services/acount/login.service'; // Importa el servicio LoginService
 
 @Component({
   selector: 'app-turn',
   templateUrl: './turn.component.html',
-  styleUrls: ['./turn.component.scss']
+  styleUrls: ['./turn.component.scss'],
 })
-export class TurnComponent {
-  cliente = [
-    {id:1, turno: 1, persona:'Juan', cuenta:'premium '},
-    {id:2, turno: 2, persona:'Juan', cuenta:'premium '},
-    {id:3, turno: 3, persona:'Juan', cuenta:'premium '},
-    {id:4, turno: 4, persona:'Juan', cuenta:'premium '},
-    {id:5, turno: 5, persona:'Juan', cuenta:'premium '},
-    {id:6, turno: 6, persona:'Juan', cuenta:'premium '},
-    {id:1, turno: 1, persona:'Juan', cuenta:'premium '},
-    {id:2, turno: 2, persona:'Juan', cuenta:'premium '},
-    {id:3, turno: 3, persona:'Juan', cuenta:'premium '},
-    {id:4, turno: 4, persona:'Juan', cuenta:'premium '},
-    {id:5, turno: 5, persona:'Juan', cuenta:'premium '},
-    {id:1, turno: 1, persona:'Juan', cuenta:'premium '},
-    {id:2, turno: 2, persona:'Juan', cuenta:'premium '},
-    {id:3, turno: 3, persona:'Juan', cuenta:'premium '},
-    {id:4, turno: 4, persona:'Juan', cuenta:'premium '},
-    {id:5, turno: 5, persona:'Juan', cuenta:'premium '},
-    {id:1, turno: 1, persona:'Juan', cuenta:'premium '},
-    {id:2, turno: 2, persona:'Juan', cuenta:'premium '},
-    {id:3, turno: 3, persona:'Juan', cuenta:'premium '},
-    {id:4, turno: 4, persona:'Juan', cuenta:'premium '},
-    {id:5, turno: 5, persona:'Juan', cuenta:'premium '},
-    // Puedes agregar más personas aquí
-  ];
-  
-  //funcion cambiar de color
-  idClien: number = 3; // recibir id 
+export class TurnComponent implements OnInit {
+  clientes: TurnModel[] = [];
 
-  // Método para comprobar si un cliente tiene el mismo que el id que recibe 
+  constructor(
+    private requestTurnService: RequestTurnService,
+    private loginService: LoginService
+  ) {}
+
+  ngOnInit(): void {
+    // Obtener el id_cuenta del usuario autenticado desde el servicio LoginService
+    const currentUser = this.loginService.getLoggedInUser();
+    if (currentUser && currentUser.id_cuenta !== undefined) {
+      const id_cuenta = currentUser.id_cuenta;
+      // Si se pudo obtener el id_cuenta del usuario, llama al servicio para obtener los datos de los clientes
+      this.obtenerClientes(id_cuenta);
+    } else {
+      // Si no se pudo obtener el id_cuenta del usuario, muestra un mensaje de error o realiza alguna acción
+      console.error('No se pudo obtener el id_cuenta del usuario.');
+    }
+  }
+
+  obtenerClientes(id_cuenta: number): void {
+    // Llama al servicio para obtener los datos de los clientes usando el id_cuenta
+    this.requestTurnService.getAccountTurn(id_cuenta.toString()).subscribe(
+      (data: TurnModel[]) => {
+        // Verificar si la respuesta es un array antes de usar la función map
+        if (Array.isArray(data)) {
+          this.clientes = data.map((turn) => {
+            return {
+              ...turn,
+              turno: turn.id_cat_turno?.turno || 'N/A',
+              nombre: turn.id_cuenta?.nombre || 'N/A',
+              cuenta: turn.id_cuenta?.id_cat_tipo_cuenta?.cuenta || 'N/A'
+            };
+          });
+        } else {
+          console.error('La respuesta del servicio no es un array:', data);
+          // Manejar el caso en que la respuesta del servicio no sea un array
+        }
+      },
+      (error) => {
+        // Manejar el error en caso de que ocurra algún problema en la solicitud
+        console.error('Error al obtener clientes:', error);
+      }
+    );
+  }
+
+  // Método para comprobar si un cliente tiene el mismo id que el usuario actual
   clienteFila(idCliente: number): boolean {
-    return idCliente === this.idClien;
+    const currentUser = this.loginService.getLoggedInUser();
+    return currentUser ? idCliente === currentUser.id_cuenta : false;
   }
 }

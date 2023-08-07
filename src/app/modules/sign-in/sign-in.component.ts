@@ -1,7 +1,8 @@
+// sign-in.component.ts
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { LoginService } from 'src/app/services/acount/login.service' // Ruta correcta de tu servicio
-import { AccountModel } from 'src/app/models/account.model'; // Ruta correcta de tu modelo
+import { LoginService } from 'src/app/services/acount/login.service';
+import { AccountModel } from 'src/app/models/account.model';
 import { Router } from '@angular/router';
 
 @Component({
@@ -14,7 +15,7 @@ export class SignInComponent implements OnInit {
   titulo = 'Iniciar sesión';
   boton = 'Entrar';
   link = 'Crear cuenta';
-  invalidCredentials = false; // Propiedad para manejar el mensaje de credenciales inválidas
+  invalidCredentials = false;
 
   constructor(private fb: FormBuilder, private loginService: LoginService, private router: Router) {
     this.createSignInForm();
@@ -22,7 +23,6 @@ export class SignInComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  // Crear el formulario de inicio de sesión
   createSignInForm(): void {
     this.frmSignIn = this.fb.group({
       correo: ['', [Validators.required, Validators.email]],
@@ -30,7 +30,6 @@ export class SignInComponent implements OnInit {
     });
   }
 
-  // Método para procesar el inicio de sesión
   iniciarSesion(): void {
     if (this.frmSignIn.valid) {
       const { correo, contrasena } = this.frmSignIn.value;
@@ -38,22 +37,26 @@ export class SignInComponent implements OnInit {
       this.loginService.login(correo, contrasena).subscribe(
         (response: any) => {
           if (response && response['Account logged']) {
-            // Inicio de sesión exitoso, puedes realizar las acciones necesarias.
+            const user: AccountModel = {
+              id_cuenta: response['id_account'], // Cambiar clave a 'id_account'
+              nombre: response['nombre'],
+              correo: response['correo'],
+              id_cat_tipo_cuenta: response['id_cat_tipo_cuenta'] // Agregar la propiedad id_cat_tipo_cuenta
+            };
+            this.loginService.setCurrentUser(user);
+
             console.log('Inicio de sesión exitoso');
             this.router.navigate(['/request-turn']);
             this.invalidCredentials = false;
           } else if (response && response['Invalid password']) {
-            // Credenciales inválidas, muestra un mensaje de error o toma alguna acción.
             console.log('Credenciales inválidas');
             this.invalidCredentials = true;
           } else {
-            // Cuenta no encontrada o error desconocido.
             console.log('Error al iniciar sesión');
             this.invalidCredentials = true;
           }
         },
         (error) => {
-          // Manejar cualquier error en la solicitud o procesamiento.
           console.error('Error al iniciar sesión', error);
           this.invalidCredentials = true;
         }
