@@ -25,7 +25,8 @@
               <td>{{ cliente.id_cat_turno?.turno }}</td>
               <!-- Accedemos a la propiedad "persona" a través de "cliente.id_cuenta" -->
               <td>{{ cliente.id_cuenta?.nombre || 'N/A' }}</td>
-              <td>{{ cliente.id_cuenta?.id_cat_tipo_cuenta  || 'N/A' }}</td>
+              <!-- Mostramos el valor correspondiente al tipo de cuenta -->
+              <td>{{ cliente.id_cat_tipo_cuenta || 'N/A' }}</td>
             </tr>
           </tbody>
         </table>
