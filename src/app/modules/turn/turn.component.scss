@@ -31,36 +31,38 @@ body {
   padding: 10px 0; /* Añadimos un espacio de relleno arriba y abajo del título */
 }
 .contenido {
-  flex: 1; /* Permite que el contenido de abajo ocupe todo el espacio disponible */
-  overflow-y: auto; /* Añade un scroll vertical cuando el contenido exceda la altura */
-  padding: 10px; /* Espacio alrededor del contenido */
+  overflow-y: auto;
+  max-height: 300px;
 }
-/*tabla*/
 
 table {
-border-collapse: collapse;
-width: 90%; /* Cambiamos el ancho de la tabla al 90% del contenedor */
-border: 1px solid #686767; /* Borde de 1 píxel de grosor y color gris */
-margin: 20px 0; /* Añadimos un espacio de separación arriba y abajo de la tabla */
+  border-collapse: collapse;
+  border: 1px solid #686767;
+  margin: 20px 0;
+  width: 100%;
+  table-layout: fixed;
 }
 
 thead {
-background:  #324e9b;
-font-weight: bold; /* Texto en negrita en el encabezado */
-color: #FFFFFF;
+  background: #324e9b;
+  font-weight: bold;
+  color: #FFFFFF;
+  position: sticky;
+  top: 0;
 }
 
 thead th,
 tbody td {
-padding: 12px; /* Aumentamos el espaciado interno de las celdas */
-text-align: center; /* Alineación centrada del contenido de las celdas */
-border: 1px solid #797878; /* Borde de 1 píxel de grosor y color gris */
+  padding: 12px;
+  text-align: center;
+  border: 1px solid #797878;
+  border-bottom: 1px solid #ddd;
 }
 
 tbody {
-  background-image: linear-gradient(to bottom,  #A9BFEF,#7C8CE6, #94A5EB, #6580E1);
-
+  background-image: linear-gradient(to bottom, #A9BFEF, #7C8CE6, #94A5EB, #6580E1);
 }
+
 
 /*estilo fila seleccionada*/
 .resaltado {
