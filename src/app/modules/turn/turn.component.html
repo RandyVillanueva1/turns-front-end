@@ -23,10 +23,10 @@
             <!-- Filas de la tabla (dinámicas) -->
             <tr *ngFor="let cliente of clientes" [ngClass]="{ 'resaltado': clienteFila(cliente.id_turno || 0) }">
               <!-- Utilizamos el operador "?" para verificar si las propiedades están definidas -->
-              <td>{{ cliente.id_turno }}</td>
+              <td>{{ cliente.id_cat_turno?.turno }}</td>
               <!-- Accedemos a la propiedad "persona" a través de "cliente.id_cuenta" -->
               <td>{{ cliente.id_cuenta?.nombre || 'N/A' }}</td>
-              <td>{{ cliente.id_cuenta?.id_cat_tipo_cuenta?.cuenta || 'N/A' }}</td>
+              <td>{{ cliente.id_cuenta?.id_cat_tipo_cuenta?.cuenta  || 'N/A' }}</td>
             </tr>
           </tbody>
         </table>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RequestTurnService } from 'src/app/services/request-turn/request-turn.service';
+import { TurnService } from 'src/app/services/turn/turn.service'; // Importa el servicio TurnService
 import { TurnModel } from 'src/app/models/turn.model';
 import { LoginService } from 'src/app/services/acount/login.service'; // Importa el servicio LoginService
 
@@ -12,7 +12,7 @@ export class TurnComponent implements OnInit {
   clientes: TurnModel[] = [];
 
   constructor(
-    private requestTurnService: RequestTurnService,
+    private turnService: TurnService, // Cambia el nombre del servicio aquí
     private loginService: LoginService
   ) {}
 
@@ -30,23 +30,29 @@ export class TurnComponent implements OnInit {
   }
 
   obtenerClientes(id_cuenta: number): void {
-    // Llama al servicio para obtener los datos de los clientes usando el id_cuenta
-    this.requestTurnService.getAccountTurn(id_cuenta.toString()).subscribe(
-      (data: TurnModel[]) => {
-        // Verificar si la respuesta es un array antes de usar la función map
-        if (Array.isArray(data)) {
-          this.clientes = data.map((turn) => {
+    // Llama al servicio para obtener la lista de turnos usando el id_cuenta
+    this.turnService.getTurns().subscribe(
+      (data: any) => {
+        // Verificar si la respuesta contiene tres arrays como se espera
+        if (Array.isArray(data) && data.length === 3) {
+          const [turnos, cuentas, catTurnos] = data;
+          this.clientes = turnos.map((turnoData: any) => {
+            const id_turno = turnoData.id_turno;
+            const id_cuenta = cuentas.find((cuenta: any) => cuenta.id_cuenta === turnoData.id_cuenta);
+            const id_cat_turno = catTurnos.find((catTurno: any) => catTurno.id_cat_turno === turnoData.id_cat_turno);
             return {
-              ...turn,
-              turno: turn.id_cat_turno?.turno || 'N/A',
-              nombre: turn.id_cuenta?.nombre || 'N/A',
-              cuenta: turn.id_cuenta?.id_cat_tipo_cuenta?.cuenta || 'N/A'
+              id_turno,
+              id_cuenta,
+              id_cat_turno,
+              turno: id_cat_turno?.turno || 'N/A',
+              nombre: id_cuenta?.nombre || 'N/A',
+              cuenta: id_cuenta?.id_cat_tipo_cuenta?.cuenta || 'N/A',
             };
           });
         } else {
-          console.error('La respuesta del servicio no es un array:', data);
-          // Manejar el caso en que la respuesta del servicio no sea un array
+          console.error('La respuesta del servicio no tiene el formato esperado:', data);
         }
+        console.log(this.clientes)
       },
       (error) => {
         // Manejar el error en caso de que ocurra algún problema en la solicitud
