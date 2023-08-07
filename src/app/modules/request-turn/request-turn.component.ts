@@ -13,6 +13,8 @@ import { LoginService } from 'src/app/services/acount/login.service';
 export class RequestTurnComponent {
   titulo = 'Generar turno';
   boton = 'Generar turno';
+  errorMessage: string | undefined;
+  isGeneratingTurn = false;
 
   constructor(
     private router: Router,
@@ -28,27 +30,30 @@ export class RequestTurnComponent {
       const id_cuenta: string | undefined = this.getLoggedInUserId();
 
       if (id_cuenta !== undefined) {
+        this.isGeneratingTurn = true; // Activar el indicador de carga o spinner
+
         // Llama al servicio para obtener el turno
         this.requestTurnService.getAccountTurn(id_cuenta).subscribe(
           (response: TurnModel[]) => {
             // Aquí puedes manejar la respuesta del servicio si es necesario
             console.log('Turnos obtenidos:', response);
+            this.isGeneratingTurn = false; // Desactivar el indicador de carga o spinner
+            this.router.navigate(['/turn']); // Navega al componente destino solo si la solicitud es exitosa
           },
           (error) => {
+            this.isGeneratingTurn = false; // Desactivar el indicador de carga o spinner
             // Manejar el error en caso de que ocurra algún problema en la solicitud
+            this.errorMessage = 'Error al obtener los turnos. Inténtalo de nuevo más tarde.';
             console.error('Error al obtener turnos:', error);
           }
         );
-
-        // Navega al componente destino
-        this.router.navigate(['/turn']);
       } else {
         // Si no se pudo obtener el id_cuenta del usuario autenticado, muestra un mensaje de error o realiza alguna acción
-        console.error('No se pudo obtener el id_cuenta del usuario autenticado.');
+        this.errorMessage = 'No se pudo obtener el id_cuenta del usuario autenticado.';
       }
     } else {
       // Si el usuario no está autenticado, muestra un mensaje de error o realiza alguna acción
-      console.error('Debes iniciar sesión o registrar una cuenta para generar el turno.');
+      this.errorMessage = 'Debes iniciar sesión o registrar una cuenta para generar el turno.';
     }
   }
 
@@ -62,7 +67,11 @@ export class RequestTurnComponent {
     const loggedInUser: AccountModel | undefined = this.loginService.getLoggedInUser();
     return loggedInUser ? loggedInUser.id_cuenta?.toString() : undefined;
   }
-  
+
+  // Método para limpiar el mensaje de error
+  clearErrorMessage() {
+    this.errorMessage = undefined;
+  }
 
   ngOnInit() {
     console.log('¿Usuario autenticado?', this.loginService.isUserAuthenticated());
